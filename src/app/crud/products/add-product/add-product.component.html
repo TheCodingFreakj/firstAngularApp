@@ -1,0 +1,97 @@
+<div class="error_builder" style="padding: 2%" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+<div class="response_builder" style="padding: 2%" *ngIf="response">
+  <p>{{ response }}</p>
+</div>
+
+<form
+  class="Cover_form"
+  #contactForm="ngForm"
+  (ngSubmit)="onSubmit(contactForm)"
+>
+  <p class="para_form">
+    <label style="font-size: 2rem; font-weight: 500" for="productname"
+      >Name</label
+    >
+    <input class="para_form2" type="text" name="productname" ngModel />
+  </p>
+
+  <p class="para_form">
+    <label style="font-size: 2rem; font-weight: 500" for="desc">Desc</label>
+    <input class="para_form2" type="text" name="desc" ngModel />
+  </p>
+
+  <p class="para_form">
+    <label style="font-size: 2rem; font-weight: 500" for="price">Price </label>
+    <input class="para_form2" type="number" id="price" name="price" ngModel />
+  </p>
+
+  <p class="para_form">
+    <label style="font-size: 2rem; font-weight: 500" for="price"
+      >Flavors
+    </label>
+    <select name="flavors" ngModel>
+      <option [ngValue]="c.name" *ngFor="let c of flavors">
+        {{ c.name }}
+      </option>
+    </select>
+  </p>
+
+  <div class="radio_form">
+    <div class="radio_form2">
+      <div class="radio_form22">
+        <label style="font-size: 2rem; font-weight: 500" for="flavours"
+          >Sizes
+        </label>
+      </div>
+      <div class="radio_form22">
+        <input
+          style="font-size: 2rem; font-weight: 500"
+          for="price"
+          type="radio"
+          value="small"
+          name="small"
+          (change)="selectSize($event)"
+          ngModel
+        />
+        Small
+        <input
+          style="font-size: 2rem; font-weight: 500"
+          for="price"
+          type="radio"
+          value="medium"
+          name="medium"
+          (change)="selectSize($event)"
+          ngModel
+        />
+        Medium
+        <input
+          style="font-size: 2rem; font-weight: 500"
+          for="price"
+          type="radio"
+          value="medium"
+          name="medium"
+          (change)="selectSize($event)"
+          ngModel
+        />
+        Large
+      </div>
+    </div>
+  </div>
+  <div>
+    <img
+      *ngFor="let url of mydata"
+      [src]="url.url"
+      class="rounded mb-3"
+      width="180"
+    />
+  </div>
+  <input type="file" multiple (change)="selectFiles($event)" />
+  <p class="para_form" *ngIf="role === 'User'; else add">
+    <button type="submit" class="button">Send For Approval</button>
+  </p>
+  <ng-template #add>
+    <button type="submit" class="button">Add Product</button>
+  </ng-template>
+</form>

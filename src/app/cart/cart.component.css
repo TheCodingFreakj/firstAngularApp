@@ -1,0 +1,26 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(50px, 1fr));
+  background-color: #fff;
+  color: rgb(44, 8, 8);
+  padding: 2%;
+}
+
+.row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(50px, 1fr));
+  margin-top: 2rem;
+}
+img.image_cart {
+    width: 20rem;
+}
+
+
+.box {
+  background-color: rgb(56, 8, 8);
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}

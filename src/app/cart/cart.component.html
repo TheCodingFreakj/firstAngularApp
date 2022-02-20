@@ -1,0 +1,27 @@
+<ng-template [ngIf]="cart?.cartshow" [ngIfElse]="isCartExist">
+  <div class="wrapper">
+    <div class="box a">Product-Image</div>
+    <div class="box b">Name</div>
+    <div class="box c">Price</div>
+    <div class="box d">Quantity</div>
+
+    <!-- Table Row -->
+    <div class="row" *ngFor="let item of cart?.choosenItems">
+      <img class="image_cart" src="{{ item.product.imageUrls[0] }}" />
+      <div class="box d">{{ item.product.name }}</div>
+      <div class="box e">{{ item.product.price }}</div>
+      <div class="box f">{{ item.quantity }}</div>
+    </div>
+
+    <div class="row">
+      <div class="box d">Total Price:</div>
+      <div class="box e">{{total}}</div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #isCartExist>
+  <div class="wrapper">
+    <h2>The Cart Is Empty</h2>
+  </div>
+</ng-template>

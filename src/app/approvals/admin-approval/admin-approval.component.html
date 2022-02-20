@@ -1,0 +1,28 @@
+<div class="error_builder" style="padding: 2%" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+<!-- <div class="response_builder" style="padding: 2%" *ngIf="response">
+    <p>{{ response }}</p>
+  </div> -->
+<div style="height: 90vh">
+  <div>
+    <div class="table">
+      <div style="font-size: 2rem; font-weight: 900">Product</div>
+      <div style="font-size: 2rem; font-weight: 900">Price</div>
+      <div style="font-size: 2rem; font-weight: 900">Approve Status</div>
+      <div style="font-size: 2rem; font-weight: 900">Submitted By</div>
+      <div style="font-size: 2rem; font-weight: 900">Approve</div>
+      <div style="font-size: 2rem; font-weight: 900">Reject</div>
+    </div>
+  </div>
+
+  <div class="table" *ngFor="let r of response">
+    <div hidden >{{ r._id }}</div>
+    <div>{{ r.name }}</div>
+    <div>{{ r.price }}</div>
+    <div>{{ r.approvStatus }}</div>
+    <div>{{ r.added_by }}</div>
+    <div><button type="submit" class="button" (click)="handleApprove(r)">Approve</button></div>
+    <div><button type="submit" class="button"(click)="handleReject( r)">Reject</button></div>
+  </div>
+</div>

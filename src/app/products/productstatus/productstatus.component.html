@@ -1,0 +1,22 @@
+
+  <div style="height: 90vh">
+    <div>
+      <div class="table">
+        <div style="font-size: 2rem; font-weight: 900">Name</div>
+        <div style="font-size: 2rem; font-weight: 900">Price</div>
+        <div style="font-size: 2rem; font-weight: 900">Size</div>
+        <div style="font-size: 2rem; font-weight: 900">Flavour</div>
+        <div style="font-size: 2rem; font-weight: 900">Approved By</div>
+      </div>
+    </div>
+  
+    <div class="table" *ngFor="let r of response">
+      <div hidden >{{ r._id }}</div>
+      <div>{{ r.name }}</div>
+      <div>{{ r.price }}</div>
+      <div>{{ r.sizes }}</div>
+      <div>{{ r.flavors }}</div>
+      <div>{{ r.approved_by }}</div>
+     
+    </div> 
+  </div>

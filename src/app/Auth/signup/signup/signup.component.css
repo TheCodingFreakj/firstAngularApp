@@ -1,0 +1,80 @@
+.form_builder {
+  background: rgb(63, 63, 48);
+  width: 30rem;
+  margin: 0 auto;
+  padding: 3%;
+  margin-top: 5rem;
+  color: wheat;
+}
+.response_builder {
+  background: rgb(13, 41, 2);
+  width: 30rem;
+  padding: auto;
+  margin: 0 auto;
+  margin-top: 5rem;
+  color: rgb(216, 199, 149);
+}
+.error_builder {
+  background: rgb(223, 161, 179);
+  width: 30rem;
+  padding: auto;
+  margin: 0 auto;
+  margin-top: 5rem;
+  color: rgb(20, 19, 16);
+}
+
+.loading_builder {
+  margin-left: 40rem;
+  padding: 3%;
+  margin-top: 10rem;
+}
+
+label {
+  width: 100rem;
+  padding: 3%;
+}
+
+.form-group {
+  display: flex;
+  margin-top: 2rem;
+}
+input#email {
+  width: 180rem;
+}
+input#password {
+  width: 180rem;
+}
+
+input#confirmPassword {
+  width: 180rem;
+}
+
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.button:disabled,
+.button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+span.text-danger {
+  margin-left: 12rem;
+  color: red;
+  background-color: yellow;
+  font-weight: 2rem;
+  width: 180rem;
+  padding: 0 10%;
+}

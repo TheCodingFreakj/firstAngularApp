@@ -1,0 +1,26 @@
+.dashvoard_section{
+    padding: 1%;
+    position: relative;
+    overflow: hidden;
+    border:1px solid red;
+
+
+}
+.dashvoard_section::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    background-image: url("../../../assets/dashboard_image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-color: black;
+    opacity: 0.8;
+    z-index: -1;
+    transform:scale(1.05); 
+    filter: gray saturate(0%) brightness(70%) contrast(1000%);
+    /* slight overscale so blur reaches all edges */
+  }

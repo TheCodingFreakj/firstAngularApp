@@ -1,0 +1,133 @@
+<div class="main_container">
+  <div class="Form">
+    <form>
+      <div class="toggle-button-text">
+        <input type="checkbox" id="toggle-button-checkbox" />
+        <label
+          class="toggle-button-switch"
+          for="toggle-button-checkbox"
+          (click)="changed()"
+        ></label>
+
+        <div class="toggle-button-text">
+          <div class="toggle-button-text-on" *ngIf="isChecked === true">ON</div>
+
+          <div class="toggle-button-text-off" *ngIf="isChecked === false">
+            OFF
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="adjust_price">
+    <div class="adjust_price1">
+      <p style="color: aliceblue">Adjust Price</p>
+    </div>
+    <div class="adjust_price2">
+      <input
+        type="number"
+        min="0.1"
+        max="10"
+        step="1"
+        value="0.1"
+        (change)="onChangeDiscount($event)"
+      />
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isChecked == true; else loggedOut" style="color: aliceblue">
+  <div class="container">
+    <div class="wrapper">
+      <div class="box a" *ngFor="let person of data">
+        <div class="inner_flex11">
+          <div class="grid_column_inner1">
+            <p>{{ person.name }}</p>
+          </div>
+          <!-- <div class="lds-heart" >
+            <div></div>
+          </div> -->
+
+          <div
+            class="spinner"
+            *ngIf="isLoading == true && person.name === 'India'"
+          >
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+
+          <div
+            class="spinner"
+            *ngIf="isLoading2 == true && person.name === 'Australia'"
+          >
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+
+          <div
+            class="spinner"
+            *ngIf="isLoading3 == true && person.name === 'UK'"
+          >
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+
+          <div
+            class="spinner"
+            *ngIf="isLoading4 == true && person.name === 'US'"
+          >
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+          <div
+            class="spinner"
+            *ngIf="isLoading5 == true && person.name === 'Canada'"
+          >
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+          <div
+            class="spinner"
+            *ngIf="isLoading6 == true && person.name === 'Poland'"
+          >
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+          <div
+            class="spinner"
+            *ngIf="isLoading7 == true && person.name === 'Pakistan'"
+          >
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+          <div class="grid_column_inner2">
+            {{
+              isLoading7 == false ||
+              isLoading6 == false ||
+              isLoading5 == false ||
+              isLoading4 == false ||
+              isLoading3 == false ||
+              isLoading2 == false ||
+              isLoading == false
+                ? person.value + "$"
+                : ""
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  <div class="elsePartDiv "  style="color: aliceblue">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions"
+      [xaxis]="chartOptions.xaxis"
+    ></apx-chart>
+  </div>
+</ng-template>

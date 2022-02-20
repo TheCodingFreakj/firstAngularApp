@@ -1,0 +1,53 @@
+<section class="dashvoard_section">
+  <app-sidebar></app-sidebar>
+  <h1>User dashboard</h1>
+  <div class="cover">
+    <div class="left_side">
+      <h1 style="color: white">User dashboard</h1>
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [dataLabels]="chartOptions.dataLabels"
+        [yaxis]="chartOptions.yaxis"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+        [fill]="chartOptions.fill"
+        [grid]="chartOptions.grid"
+      ></apx-chart>
+          <hr class="new2" />\
+          <hr/>
+          <hr/>
+         
+      <apx-chart
+      [series]="Options.series"
+      [chart]="Options.chart"
+      [xaxis]="Options.xaxis"
+      [dataLabels]="Options.dataLabels"
+      [grid]="Options.grid"
+      [stroke]="Options.stroke"
+      [title]="Options.title"
+    ></apx-chart>
+
+    
+    </div>
+    <div class="right_side">
+      <h1 style="color: white">User dashboard</h1>
+      <apx-chart
+      [series]="chartOp.series"
+      [chart]="chartOp.chart"
+      [xaxis]="chartOp.xaxis"
+      [stroke]="chartOp.stroke"
+      [tooltip]="chartOp.tooltip"
+      [dataLabels]="chartOp.dataLabels"
+      [legend]="chartOp.legend"
+      [markers]="chartOp.markers"
+      [grid]="chartOp.grid"
+      [yaxis]="chartOp.yaxis"
+      [title]="chartOp.title"
+    ></apx-chart>
+     <app-toggle-switch (changed22)="checked=$event"></app-toggle-switch>
+ 
+    </div>
+  </div>
+</section>

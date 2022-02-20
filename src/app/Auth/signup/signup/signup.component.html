@@ -1,0 +1,108 @@
+<div class="loading_builder" *ngIf="isLoading"><app-spinners></app-spinners></div>
+<div   class="error_builder" style="padding:2%;" *ngIf="error">
+  <p>{{error}} </p>
+</div>
+<div   class="response_builder" style="padding:2%;" *ngIf="response">
+  <p>{{response}} </p>
+</div>
+
+<form
+  class="form_builder"
+  [formGroup]="myForm"
+  (ngSubmit)="onSignup()"
+  *ngIf="!isLoading"
+>
+
+  <div class="form-group">
+    <label for="email">E-Mail</label>
+    <input
+      formControlName="email"
+      type="email"
+      id="email"
+      #email
+      (focus)="onFocusEmail()"
+      (blur)="onFocusEmail()"
+      class="form-control"
+    />
+  </div>
+  <span
+    class="text-danger"
+    *ngIf="
+      myForm.get('email')?.touched &&
+      myForm.get('email')?.value === '' &&
+      !submitted
+    "
+  >
+    Email is required
+  </span>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      formControlName="password"
+      type="password"
+      id="password"
+      #password
+      (focus)="onFocusEmail()"
+      (blur)="onFocusEmail()"
+      class="form-control"
+    />
+  </div>
+  <span
+    class="text-danger"
+    *ngIf="
+      myForm.get('password')?.touched &&
+      myForm.get('password')?.value === '' &&
+      !submitted
+    "
+  >
+    Password is required
+  </span>
+  <div class="form-group">
+    <label for="confirm-password">Confirm Password</label>
+    <input
+      formControlName="confirmPassword"
+      type="password"
+      id="confirmPassword"
+      #confirmPassword
+      (focus)="onFocusEmail()"
+      (blur)="onFocusEmail()"
+      class="form-control"
+    />
+    <!-- <span *ngIf="!confirmPassword.pristine && confirmPassword.errors != null && confirmPassword.errors['passwordsNotMatch']">Passwords do not match</span> -->
+  </div>
+  <span
+    class="text-danger"
+    *ngIf="
+      myForm.get('confirmPassword')?.touched &&
+      myForm.get('confirmPassword')?.value === '' &&
+      !submitted
+    "
+  >
+    Confirm Password is required
+  </span>
+  <span
+    class="text-danger"
+    *ngIf="
+      myForm.get('confirmPassword')?.touched &&
+      myForm.get('confirmPassword')?.value !== '' &&
+      passwordmatch === true
+    "
+  >
+    Passwords doesnot match
+  </span>
+
+ 
+
+  <div class="form-group">
+    <select class="custom-select" (change)="chooseRole($event)">
+      <option value="">Choose your Role</option>
+      <option *ngFor="let role of Role" [ngValue]="role">{{ role }}</option>
+    </select>
+    <!-- <span *ngIf="!confirmPassword.pristine && confirmPassword.errors != null && confirmPassword.errors['passwordsNotMatch']">Passwords do not match</span> -->
+  </div>
+
+
+  <button type="submit" [disabled]="isValid === false" class="button">
+    Sign In
+  </button>
+</form>

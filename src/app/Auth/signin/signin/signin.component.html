@@ -1,0 +1,62 @@
+<div class="loading_builder" *ngIf="isLoading">
+  <app-spinners></app-spinners>
+</div>
+<div class="error_builder" style="padding: 2%" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+
+<form
+  class="form_builder"
+  [formGroup]="myForm"
+  (ngSubmit)="onSignin()"
+  *ngIf="!isLoading"
+>
+  <div class="form-group">
+    <label for="email">E-Mail</label>
+    <input
+      formControlName="email"
+      type="email"
+      id="email"
+      #email
+      (focus)="onFocusEmail()"
+      (blur)="onFocusEmail()"
+      class="form-control"
+    />
+  </div>
+  <span
+    class="text-danger"
+    *ngIf="
+      myForm.get('email')?.touched &&
+      myForm.get('email')?.value === '' &&
+      !submitted
+    "
+  >
+    Email is required
+  </span>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      formControlName="password"
+      type="password"
+      id="password"
+      #password
+      (focus)="onFocusEmail()"
+      (blur)="onFocusEmail()"
+      class="form-control"
+    />
+  </div>
+  <span
+    class="text-danger"
+    *ngIf="
+      myForm.get('password')?.touched &&
+      myForm.get('password')?.value === '' &&
+      !submitted
+    "
+  >
+    Password is required
+  </span>
+
+  <button type="submit" [disabled]="isValid === false" class="button">
+    Sign In
+  </button>
+</form>

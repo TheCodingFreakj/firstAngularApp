@@ -1,0 +1,208 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100px;
+  height: 50px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/* 토글 버튼 내부의 원. 감춘 체크박스와 연동한다. */
+.toggle-button-switch {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 46px;
+  height: 46px;
+  background-color: #fff;
+  border-radius: 100%;
+  cursor: pointer;
+  z-index: 100;
+  transition: left 0.3s;
+}
+
+/* 토글 버튼의 바탕 */
+.toggle-button-text {
+  overflow: hidden;
+  background-color: #fc3164;
+  border-radius: 25px;
+  box-shadow: 2px 2px 5px 0 rgba(50, 50, 50, 0.75);
+  transition: background-color 0.3s;
+}
+
+/* 토글 버튼의 텍스트 */
+
+.toggle-button-text-off {
+  float: left;
+  width: 50%;
+  height: 100%;
+  line-height: 50px;
+  font-family: Lato, sans-serif;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.toggle-button-text-on {
+  float: right;
+  width: 50%;
+  height: 100%;
+  line-height: 50px;
+  font-family: Lato, sans-serif;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+/* 체크박스가 체크 상태이면 토글 버튼 내부의 원을 오른쪽으로 52px 이동 */
+input[type="checkbox"]:checked ~ .toggle-button-switch {
+  left: 52px;
+}
+
+/* 체크박스가 체크 상태이면 토글 버튼의 배경색 변경 */
+input[type="checkbox"]:checked ~ .toggle-button-text {
+  background-color: #3dbf87;
+}
+.adjust_price {
+  width: 20rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+input[type="number"] {
+  margin-top: 1rem;
+}
+.container {
+  width: 28rem;
+  margin-top: 3rem;
+  margin-right: -1rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  position: relative;
+  left: 6rem;
+}
+
+.box {
+  color: #fff;
+}
+.inner_flex11 {
+  margin-top: 2rem;
+}
+.grid_column_inner2 {
+  margin-top: -1rem;
+}
+.a {
+  width: 40rem;
+}
+.b {
+  width: 40rem;
+}
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+}
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin-top: 4x;
+  margin-left: 18rem;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 10px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  margin-left: -17.9rem;
+  /* //margin-top: -4rem; */
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+.elsePartDiv {
+  background: gainsboro;
+  width: 30rem;
+}

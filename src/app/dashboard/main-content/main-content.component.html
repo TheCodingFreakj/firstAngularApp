@@ -1,0 +1,213 @@
+<div class="mainContent">
+  <h1>This is Main Content</h1>
+
+  <div class="grid_wapper">
+    <div class="grid_column">
+      Total Sales
+
+      <h1>$1234K</h1>
+      <p>Today</p>
+      <div id="dialog1" [ngClass]="{'triangle_down': toggle, 'triangle_up1': !toggle}"class="triangle_down" (click)="change()"></div>
+      <p>$229 vs same day last week</p>
+
+      <p>Sales volume</p>
+      <div id="chart">
+        <div id="apex-chart"></div>
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [stroke]="chartOptions.stroke"
+          [tooltip]="chartOptions.tooltip"
+          [dataLabels]="chartOptions.dataLabels"
+          [legend]="chartOptions.legend"
+          [markers]="chartOptions.markers"
+          [grid]="chartOptions.grid"
+          [yaxis]="chartOptions.yaxis"
+          [title]="chartOptions.title"
+        ></apx-chart>
+      </div>
+
+      Sales By Location
+
+      <div class="inner_div">
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>US</p></div>
+          <div class="grid_column_inner2">$22K</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>UK</p></div>
+          <div class="grid_column_inner2">$259</div>
+        </div>
+        <hr class="new1" />
+
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Canada</p></div>
+          <div class="grid_column_inner2">$380</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Australia</p></div>
+          <div class="grid_column_inner2">$1140</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>India</p></div>
+          <div class="grid_column_inner2">$912</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid_column">
+      Orders
+      <h1>$1234</h1>
+      <p>Today</p>
+      <div id="dialog3" class="triangle_up1"></div>
+      <p>8% vs same day last week</p>
+
+      <p>Order volume</p>
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [stroke]="chartOptions.stroke"
+        [tooltip]="chartOptions.tooltip"
+        [dataLabels]="chartOptions.dataLabels"
+        [legend]="chartOptions.legend"
+        [markers]="chartOptions.markers"
+        [grid]="chartOptions.grid"
+        [yaxis]="chartOptions.yaxis"
+        [title]="chartOptions.title"
+      ></apx-chart>
+      Orders By Channel
+
+      <div class="inner_flex11">
+        <div class="grid_column_inner1"><p>Marketing Place</p></div>
+        <div class="grid_column_inner2">80</div>
+      </div>
+      <progress max="100" value="80"></progress>
+
+      <div class="inner_flex11">
+        <div class="grid_column_inner1"><p>Store</p></div>
+        <div class="grid_column_inner2">50</div>
+      </div>
+      <progress max="100" value="50"></progress>
+
+      <div class="inner_flex11">
+        <div class="grid_column_inner1"><p>Shop</p></div>
+        <div class="grid_column_inner2">90</div>
+      </div>
+      <progress max="100" value="90"></progress>
+    </div>
+
+    <div class="grid_column">
+      Net Profit
+
+      <h1>$16.4K</h1>
+      <p>This Month</p>
+      <div id="dialog3" class="triangle_up1"></div>
+      <p>$2.02K vs last monthk</p>
+
+      <p>Order volume</p>
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [stroke]="chartOptions.stroke"
+        [tooltip]="chartOptions.tooltip"
+        [dataLabels]="chartOptions.dataLabels"
+        [legend]="chartOptions.legend"
+        [markers]="chartOptions.markers"
+        [grid]="chartOptions.grid"
+        [yaxis]="chartOptions.yaxis"
+        [title]="chartOptions.title"
+      ></apx-chart>
+      <div class="grid_column_inner">
+        Avg Order Value
+        <apx-chart
+          [series]="options.series"
+          [chart]="options.chart"
+          [grid]="options.grid"
+          [plotOptions]="options.plotOptions"
+          [responsive]="options.responsive"
+        ></apx-chart>
+      </div>
+    </div>
+    <div class="grid_column">
+      P&L statement - last month
+
+      <div class="inner_div">
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Sale price</p></div>
+          <div class="grid_column_inner2">$22K</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Referer cut</p></div>
+          <div class="grid_column_inner2">$259</div>
+        </div>
+        <hr class="new1" />
+
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Packaging costs</p></div>
+          <div class="grid_column_inner2">$380</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Shipping costs</p></div>
+          <div class="grid_column_inner2">$1140</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Warehouse costs</p></div>
+          <div class="grid_column_inner2">$912</div>
+        </div>
+        <hr class="new1" />
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Paypal transactions</p></div>
+          <div class="grid_column_inner2">$441</div>
+        </div>
+        <hr class="new1" />
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Total costs</p></div>
+          <div class="grid_column_inner2">$3,131</div>
+        </div>
+      </div>
+
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+      <hr class="new2" />
+
+      Sales By refere
+      <div class="inner_div">
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Sale price</p></div>
+          <div class="grid_column_inner2">$22K</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Sale price</p></div>
+          <div class="grid_column_inner2">$22K</div>
+        </div>
+
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Sale price</p></div>
+          <div class="grid_column_inner2">$22K</div>
+        </div>
+
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Sale price</p></div>
+          <div class="grid_column_inner2">$22K</div>
+        </div>
+        <div class="inner_flex11">
+          <div class="grid_column_inner1"><p>Sale price</p></div>
+          <div class="grid_column_inner2">$22K</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+.Cover_form {
+  width: 30rem;
+  padding: 2%;
+  margin: 0 auto;
+}
+
+p.para_form {
+    display: flex;
+    justify-content: space-between;
+}
+input.para_form2{
+    width: 20rem;
+    height: 3rem;
+}
+select{
+    width: 20.4rem;
+    height: 3rem; 
+}
+
+.radio_form2{
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.radio_form22 {
+    display: flex;
+    /* flex-direction: column; */
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .response_builder {
+    background: rgb(13, 41, 2);
+    width: 30rem;
+    padding: auto;
+    margin: 0 auto;
+    margin-top: 5rem;
+    color: rgb(216, 199, 149);
+  }
+  .error_builder {
+    background: rgb(223, 161, 179);
+    width: 30rem;
+    padding: auto;
+    margin: 0 auto;
+    margin-top: 5rem;
+    color: rgb(20, 19, 16);
+  }
+
+
+

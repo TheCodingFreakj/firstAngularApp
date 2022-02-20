@@ -1,0 +1,86 @@
+.mainContent {
+  /* background-color: black; */
+  /* width: 20rem; */
+  color: wheat;
+}
+
+.grid_wapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 10px;
+  /* max-width: 50rem; */
+  margin: 0 auto;
+}
+
+.grid_wapper > * {
+  padding: 30px;
+  /* width: 20rem; */
+}
+
+.grid_column {
+  background: rgb(44, 14, 75);
+}
+
+.inner_flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.grid_column_inner {
+  text-align: center;
+  margin-top: 2%;
+  background: rgb(61, 13, 13);
+}
+.grid_column_inner2 {
+  margin-left: 13rem;
+  margin-top: -2rem;
+}
+
+hr.new1 {
+  border-top: 1px solid red;
+}
+
+hr.new2 {
+  border-top: 0px transparent rgb(44, 14, 75);
+  visibility: hidden;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 250px;
+  height: 20px;
+}
+
+.triangle_down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 10px solid #78b178;
+  font-size: 0;
+  line-height: 0;
+  float: left;
+}
+.triangle_up1 {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 10px solid #78b178;
+    transform: rotate(-180deg);
+    font-size: 0;
+    line-height: 0;
+    float: left;
+  }
+
+div#dialog1 {
+  margin-top: 0.4rem;
+  margin-right: 0.3rem;
+}
+
+div#dialog3 {
+    margin-top: 0.4rem;
+    margin-right: 0.3rem;
+  }

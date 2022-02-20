@@ -1,0 +1,21 @@
+<h1>{{ product?.name }}</h1>
+<img [src]="imageUrl" />
+<p>Price: {{ product?.price }}</p>
+<button
+  class="button"
+  [attr.data-item-id]="product?.id"
+  [attr.data-item-price]="product?.price"
+  [attr.data-item-url]="'product/' + product?.id"
+  [attr.data-item-image]="imageUrl"
+  [attr.data-item-name]="product?.name"
+  (click)="onClickCartButton(product)"
+>
+  Add To cart
+</button>
+<select class="custom-select" (change)="chooseQuantity($event)">
+  <option value="" disabled>Choose your Quantity</option>
+  <option *ngFor="let city of City" [ngValue]="city">{{ city }}</option>
+</select>
+<button class="button" [routerLink]="'/products/' + product?.id">
+  Explore
+</button>
