@@ -1,22 +1,189 @@
+<div class="table_container" style="height: 90vh">
+  <div>
+    <div
+      class="response_builder"
+      style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1%;
+        text-align: center;
+        margin-left: 10rem;
+      "
+      *ngIf="toBeUpdated"
+    >
+      <div style="margin-left: 10rem">
+        <div class="modal_content">
+          <div class="error_builder" style="padding: 2%" *ngIf="erroredit">
+            <p>{{ erroredit }}</p>
+            <p class="close" (click)="closeNowRes()">x</p>
+          </div>
+          <div
+            class="response_builder"
+            style="padding: 2%"
+            *ngIf="responseedit"
+          >
+            <p>{{ responseedit }}</p>
+            <p class="close" (click)="closeNowRes()">x</p>
+          
+          </div>
+          <p class="close" (click)="onclose()">x</p>
+          <form
+            class="Cover_form"
+            #contactForm="ngForm"
+            (ngSubmit)="onSubmit(contactForm)"
+          >
+            <p class="para_form">
+              <label style="font-size: 2rem; font-weight: 500" for="productname"
+                >Name</label
+              >
+              <input
+                class="para_form2"
+                type="text"
+                name="productname"
+                [(ngModel)]="toBeUpdated.name"
+              />
+            </p>
 
-  <div style="height: 90vh">
-    <div>
-      <div class="table">
-        <div style="font-size: 2rem; font-weight: 900">Name</div>
-        <div style="font-size: 2rem; font-weight: 900">Price</div>
-        <div style="font-size: 2rem; font-weight: 900">Size</div>
-        <div style="font-size: 2rem; font-weight: 900">Flavour</div>
-        <div style="font-size: 2rem; font-weight: 900">Approved By</div>
+            <p class="para_form">
+              <label style="font-size: 2rem; font-weight: 500" for="desc"
+                >Desc</label
+              >
+              <input
+                class="para_form2"
+                type="text"
+                name="desc"
+                [(ngModel)]="toBeUpdated.desc"
+              />
+            </p>
+
+            <p class="para_form">
+              <label style="font-size: 2rem; font-weight: 500" for="price"
+                >Price
+              </label>
+              <input
+                class="para_form2"
+                type="number"
+                id="price"
+                name="price"
+                [(ngModel)]="toBeUpdated.price"
+              />
+            </p>
+
+            <p class="para_form">
+              <label style="font-size: 2rem; font-weight: 500" for="price"
+                >Flavors
+              </label>
+              <select name="flavors" [(ngModel)]="flavorsselect">
+                <option [ngValue]="c.name" *ngFor="let c of flavors">
+                  {{ c.name }}
+                </option>
+              </select>
+            </p>
+
+            <div class="radio_form">
+              <div class="radio_form2">
+                <div class="radio_form22">
+                  <label
+                    style="font-size: 2rem; font-weight: 500"
+                    for="flavours"
+                    >Sizes
+                  </label>
+                </div>
+                <div class="radio_form22">
+                  <input
+                    style="font-size: 2rem; font-weight: 500"
+                    for="small"
+                    type="radio"
+                    value="small"
+                    name="selectSize"
+                    (change)="selectSize($event)"
+                    [checked]="toBeUpdated.sizes === 'small'"
+                  />
+                  Small
+                  <input
+                    style="font-size: 2rem; font-weight: 500"
+                    for="medium"
+                    type="radio"
+                    value="medium"
+                    name="selectSize"
+                    (change)="selectSize($event)"
+                    [checked]="toBeUpdated.sizes === 'medium'"
+                  />
+                  Medium
+                  <input
+                    style="font-size: 2rem; font-weight: 500"
+                    for="large"
+                    type="radio"
+                    value="large"
+                    name="selectSize"
+                    (change)="selectSize($event)"
+                    [checked]="toBeUpdated.sizes === 'large'"
+                  
+                  />
+                  Large
+                </div>
+              </div>
+            </div>
+            <div>
+              <img
+                *ngFor="let url of toBeUpdated.imageUrls"
+                [src]="url.url"
+                class="rounded mb-3"
+                width="50"
+              />
+            </div>
+            <input type="file" multiple (change)="selectFiles($event)" />
+            <p class="para_form">
+              <button type="submit" class="button">Send For Approval</button>
+            </p>
+          </form>
+        </div>
+       
+         
       </div>
     </div>
-  
-    <div class="table" *ngFor="let r of response">
-      <div hidden >{{ r._id }}</div>
-      <div>{{ r.name }}</div>
-      <div>{{ r.price }}</div>
-      <div>{{ r.sizes }}</div>
-      <div>{{ r.flavors }}</div>
-      <div>{{ r.approved_by }}</div>
-     
-    </div> 
+    <div class="table">
+      <div style="font-size: 1rem; font-weight: 900">Name</div>
+      <div style="font-size: 1rem; font-weight: 900" (click)="sortingPrice()">
+        Price
+        <div
+          id="dialog3"
+          [ngClass]="{
+            triangle_up1: isAscendingSort,
+            triangle_down: !isAscendingSort
+          }"
+        ></div>
+      </div>
+      <div style="font-size: 1rem; font-weight: 900">Size</div>
+      <div style="font-size: 1rem; font-weight: 900">Flavour</div>
+      <div style="font-size: 1rem; font-weight: 900">Approved By</div>
+      <div style="font-size: 1rem; font-weight: 900">Edit</div>
+      <div style="font-size: 1rem; font-weight: 900">Delete</div>
+    </div>
   </div>
+
+  <div
+    class="table"
+    *ngFor="
+      let r of response | paginate: { itemsPerPage: count, currentPage: p }
+    "
+  >
+    <div hidden>{{ r._id }}</div>
+    <div>{{ r.name }}</div>
+    <div>{{ r.price }}</div>
+    <div>{{ r.sizes }}</div>
+    <div>{{ r.flavors }}</div>
+    <div>{{ r.approved_by }}</div>
+    <div>
+      <button type="submit" class="button" (click)="updateTow(r)">Edit</button>
+    </div>
+    <div>
+      <button type="submit" class="button" (click)="deleteTow(r._id)">
+        Delete
+      </button>
+    </div>
+  </div>
+  <div class="text-right" *ngIf="response.length > 0">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

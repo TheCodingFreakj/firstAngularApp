@@ -10,15 +10,24 @@ import { ProductsService } from '../services/product/products.service';
 export class ProductsComponent implements OnInit {
 
   productsfetched: Product[] = [];
+  error: any;
+  response: any;
 
   constructor(private productService: ProductsService) {}
 
-  getProducts(): void {
-    
-  }
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.productsfetched = res;
+      },
+      (errorMessage: any) => {
+        console.log(errorMessage);
+        this.error = errorMessage;
 
-  ngOnInit() {
-    this.getProducts();
+        //this.isLoading = false;
+      }
+    );
   }
 
 }

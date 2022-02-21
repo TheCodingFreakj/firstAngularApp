@@ -6,8 +6,8 @@
     <a  [routerLink]="'/cart'" >Cart</a>
     <a  [routerLink]="'/signup'">Signup</a>
     <a  [routerLink]="'/signin'">SignIn</a>
-    <a  [routerLink]="'/dashboard'" *ngIf="isAuth">Dashboard</a>
-    <a  [routerLink]="'/userdashboard'" *ngIf="isAuth">UserDashboard</a>
+    <a  [routerLink]="'/dashboard'" *ngIf="role === 'Admin'">Dashboard</a>
+    <a  [routerLink]="'/userdashboard'" *ngIf="role === 'User'">UserDashboard</a>
     
     
     <a *ngIf="isAuth" (click)="onLogOut()">Logout</a>

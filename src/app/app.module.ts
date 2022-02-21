@@ -10,6 +10,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductItemsComponent } from './products/product-items/product-items.component';
 import { SingleProductPageComponent } from './products/single-product-page/single-product-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CartComponent } from './cart/cart.component';
 import { SignupComponent } from './Auth/signup/signup/signup.component';
 import { SigninComponent } from './Auth/signin/signin/signin.component';
@@ -62,7 +63,8 @@ import { ProductstatusComponent } from './products/productstatus/productstatus.c
     ReactiveFormsModule,
     HttpClientModule,
     NgApexchartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,7 @@ export class HeaderAppComponent implements OnInit {
   private authServiceUser: Subscription | undefined;
   isAuth = false;
   user: string | null | undefined;
+  role: any;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -21,6 +22,11 @@ export class HeaderAppComponent implements OnInit {
     if (this.user) {
       this.isAuth = true;
     }
+
+    let user: any = localStorage.getItem('currentLoggedinUser');
+    this.role = JSON.parse(user).user.role.toString();
+
+     
   }
   onLogOut() {
     localStorage.clear();

@@ -48,7 +48,7 @@
       <div class="radio_form22">
         <input
           style="font-size: 2rem; font-weight: 500"
-          for="price"
+          for="small"
           type="radio"
           value="small"
           name="small"
@@ -58,7 +58,7 @@
         Small
         <input
           style="font-size: 2rem; font-weight: 500"
-          for="price"
+          for="medium"
           type="radio"
           value="medium"
           name="medium"
@@ -68,10 +68,10 @@
         Medium
         <input
           style="font-size: 2rem; font-weight: 500"
-          for="price"
+          for="large"
           type="radio"
-          value="medium"
-          name="medium"
+          value="large"
+          name="large"
           (change)="selectSize($event)"
           ngModel
         />
@@ -88,10 +88,8 @@
     />
   </div>
   <input type="file" multiple (change)="selectFiles($event)" />
-  <p class="para_form" *ngIf="role === 'User'; else add">
+  <p class="para_form">
     <button type="submit" class="button">Send For Approval</button>
   </p>
-  <ng-template #add>
-    <button type="submit" class="button">Add Product</button>
-  </ng-template>
+  
 </form>

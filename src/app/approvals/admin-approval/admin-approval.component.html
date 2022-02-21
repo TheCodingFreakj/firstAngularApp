@@ -1,28 +1,71 @@
-<div class="error_builder" style="padding: 2%" *ngIf="error">
-  <p>{{ error }}</p>
-</div>
-<!-- <div class="response_builder" style="padding: 2%" *ngIf="response">
-    <p>{{ response }}</p>
-  </div> -->
-<div style="height: 90vh">
-  <div>
-    <div class="table">
-      <div style="font-size: 2rem; font-weight: 900">Product</div>
-      <div style="font-size: 2rem; font-weight: 900">Price</div>
-      <div style="font-size: 2rem; font-weight: 900">Approve Status</div>
-      <div style="font-size: 2rem; font-weight: 900">Submitted By</div>
-      <div style="font-size: 2rem; font-weight: 900">Approve</div>
-      <div style="font-size: 2rem; font-weight: 900">Reject</div>
-    </div>
-  </div>
+<div class="main_container">
+  <div class="table_container" style="height: 90vh">
+    <div>
+      <div class="table">
+        <div
+          class="response_builder"
+          style="
+            display: flex;
+            justify-content: space-between;
+            padding: 1%;
+            text-align: center;
+            margin-left: 10rem;
+          "
+          *ngIf="responseadd"
+        >
+          <p style="margin-left: 10rem">{{ responseadd }}</p>
+          <p class="close" (click)="closeNowRes()">x</p>
+        </div>
 
-  <div class="table" *ngFor="let r of response">
-    <div hidden >{{ r._id }}</div>
-    <div>{{ r.name }}</div>
-    <div>{{ r.price }}</div>
-    <div>{{ r.approvStatus }}</div>
-    <div>{{ r.added_by }}</div>
-    <div><button type="submit" class="button" (click)="handleApprove(r)">Approve</button></div>
-    <div><button type="submit" class="button"(click)="handleReject( r)">Reject</button></div>
+        <div
+          class="error_builder"
+          style="
+            display: flex;
+            justify-content: space-between;
+            padding: 1%;
+            text-align: center;
+            margin-left: 10rem;
+          "
+          *ngIf="errorfecth"
+        >
+          <p style="margin-left: 10rem">{{ errorfecth }}</p>
+          <p class="close" (click)="closeNow()">x</p>
+        </div>
+        <div style="font-size: 1rem; font-weight: 900">Product</div>
+        <div style="font-size: 1rem; font-weight: 900">Price</div>
+        <div style="font-size: 1rem; font-weight: 900">Approve Status</div>
+        <div style="font-size: 1rem; font-weight: 900">Submitted By</div>
+        <div style="font-size: 1rem; font-weight: 900">Images</div>
+        <div style="font-size: 1rem; font-weight: 900">Size</div>
+        <div style="font-size: 1rem; font-weight: 900">Flavour</div>
+        <div style="font-size: 1rem; font-weight: 900">Approve</div>
+        <div style="font-size: 1rem; font-weight: 900">Reject</div>
+      </div>
+    </div>
+    <div *ngIf="response.length > 0; else empty">
+      <div class="table" *ngFor="let r of response">
+        <div hidden>{{ r._id }}</div>
+        <div>{{ r.name }}</div>
+        <div>{{ r.price }}</div>
+        <div>{{ r.approvStatus }}</div>
+        <div>{{ r.added_by }}</div>
+        <div>{{ r.imageUrls.length }}</div>
+        <div>{{ r.sizes }}</div>
+        <div>{{ r.flavors }}</div>
+       
+        <div>
+          <button type="submit" class="button" (click)="handleApprove(r)">
+            Approve
+          </button>
+        </div>
+        <div>
+          <button type="submit" class="button" (click)="handleReject(r)">
+            Reject
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #empty><h1 style="text-align: center; margin-top: 3rem;">Approval List Is Empty</h1></ng-template>
   </div>
 </div>

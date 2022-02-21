@@ -8,8 +8,8 @@ import { Product } from '../../core/product';
   styleUrls: ['./product-items.component.css'],
 })
 export class ProductItemsComponent implements OnInit {
-  @Input() product: Product | undefined;
-  imageUrl: string = '';
+  @Input() product: any | undefined;
+  imageUrl: any = '';
   City: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'more'];
   cartItems: any[] = [];
   quantity: any;
@@ -18,7 +18,8 @@ export class ProductItemsComponent implements OnInit {
   constructor(private cartService: CartServiceService) {}
 
   ngOnInit(): void {
-    this.imageUrl = this.product?.imageUrls[0] ?? '';
+    //console.log(this.product?.imageUrls[0].url)
+    this.imageUrl = this.product?.imageUrls[0].url ?? '';
   }
 
   onClickCartButton(product: any) {

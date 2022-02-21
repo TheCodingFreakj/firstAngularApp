@@ -1,49 +1,190 @@
 .response_builder {
-    background: rgb(13, 41, 2);
-    width: 30rem;
-    padding: auto;
-    margin: 0 auto;
-    margin-top: 5rem;
-    color: rgb(216, 199, 149);
+  background: rgb(13, 41, 2);
+  position: absolute;
+  z-index: 99999999;
+  border-radius: 25px;
+  top: 100px;
+  left: 100px;
+  color: rgb(20, 19, 16);
+  animation-name: slidersuccess;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+@keyframes slidersuccess {
+  from {
+    opacity: 1;
+    left: 0px;
+    background: rgb(30, 187, 43);
+    width: 40%;
   }
-  .error_builder {
+  100% {
+    opacity: 1;
+    left: 200px;
+    background: rgb(15, 49, 24);
+    color: rgb(235, 223, 199);
+    width: 40%;
+  }
+}
+
+.inner_main {
+  position: relative;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+  position: relative;
+}
+
+.error_builder {
+  background: rgb(223, 161, 179);
+  position: absolute;
+  z-index: 99999999;
+  border-radius: 25px;
+  top: 100px;
+  left: 100px;
+  color: rgb(20, 19, 16);
+  animation-name: slider;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+@keyframes slider {
+  from {
+    opacity: 1;
+    left: 0px;
+    background: red;
+    width: 40%;
+  }
+  100% {
+    opacity: 1;
+    left: 200px;
     background: rgb(223, 161, 179);
-    width: 30rem;
-    padding: auto;
-    margin: 0 auto;
-    margin-top: 5rem;
-    color: rgb(20, 19, 16);
+    color: rgb(36, 34, 30);
+    width: 40%;
   }
-  
-  .table {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-   
-  }
-  .button {
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-  
-  .table > div {
-    margin: 2px;
-    background: powderblue;
-    padding: 5px;
-  }
-  
-  .table > div:nth-child(3n + 2) {
-    background: lemonchiffon;
-  }
-  
-  .table > div:nth-child(3n + 3) {
-    background: palegreen;
-  }
-  
+}
+
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.table > div {
+  margin: 1px;
+  background: powderblue;
+  padding: 5px;
+}
+
+.table > div:nth-child(3n + 2) {
+  background: lemonchiffon;
+}
+
+.table > div:nth-child(3n + 3) {
+  background: palegreen;
+}
+
+.text-right {
+  float: right;
+}
+
+.triangle_down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 10px solid #78b178;
+  font-size: 0;
+  line-height: 0;
+  float: left;
+}
+.triangle_up1 {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 10px solid #78b178;
+  transform: rotate(-180deg);
+  font-size: 0;
+  line-height: 0;
+  float: left;
+}
+
+.Cover_form {
+  width: 30rem;
+  padding: 2%;
+  margin: 0 auto;
+}
+
+p.para_form {
+  display: flex;
+  justify-content: space-between;
+}
+input.para_form2 {
+  width: 20rem;
+  height: 3rem;
+}
+select {
+  width: 20.4rem;
+  height: 3rem;
+}
+
+.radio_form2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio_form22 {
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.response_builder {
+  background: rgb(13, 41, 2);
+  width: 30rem;
+  padding: auto;
+  margin: 0 auto;
+  margin-top: 5rem;
+  color: rgb(216, 199, 149);
+}
+.error_builder {
+  background: rgb(223, 161, 179);
+  width: 30rem;
+  padding: auto;
+  margin: 0 auto;
+  margin-top: 5rem;
+  color: rgb(20, 19, 16);
+}
+
+.modal_content {
+  margin-left: -10rem;
+}
+
+.close {
+  margin-right: -10rem;
+}
