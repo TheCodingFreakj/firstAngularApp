@@ -36,13 +36,15 @@ export class ProductstatusComponent implements OnInit {
     let user: any = localStorage.getItem('currentLoggedinUser');
     this.role = JSON.parse(user).user.role.toString();
     this.userAdded = JSON.parse(user).user.email;
+    
   }
 
   ngOnInit(): void {
     this.fetch.getProducts().subscribe(
       (res: any) => {
-        console.log(res);
-        this.response = res;
+        console.log(res.products);
+        this.response = res.products;
+        console.log(this.response);
       },
       (errorMessage: any) => {
         console.log(errorMessage);
@@ -70,7 +72,7 @@ export class ProductstatusComponent implements OnInit {
   updateTow(row: any) {
     this.toBeUpdated = row;
     this.flavorsselect = this.toBeUpdated.flavors.toString();
-    console.log(this.toBeUpdated.imageUrls);
+    console.log(this.toBeUpdated);
   }
   deleteTow(row: any) {
     console.log(row);
@@ -78,41 +80,48 @@ export class ProductstatusComponent implements OnInit {
   }
 
   onSubmit(contactForm: any) {
-    //console.log(contactForm.value);
+    console.log(contactForm.value);
     // console.log(this.toBeUpdated.imageUrls);
     console.log(this.mydata);
     let request: any = {
+      id: '',
       urlsSelected: '',
       productValue: '',
       size: '',
       approvStatus: '',
+      rejectStatus:'',
       added_by: '',
       approved_by: '',
     };
     if (this.mydata.length === 0 && request['urlsSelected'].length === 0) {
       console.log('kjhkjh');
+      request['id'] = this.toBeUpdated.id;
       request['urlsSelected'] = this.toBeUpdated.imageUrls;
       request['productValue'] = contactForm.value;
       request['size'] = this.size ? this.size : this.toBeUpdated.sizes;
       request['approvStatus'] = false;
+      request["rejectStatus"] =request["rejectStatus"] === true ? false : null
       request['added_by'] = this.userAdded;
       request['approved_by'] = null;
     } else {
+
+      console.log('kjhkjh');
+      request['id'] = this.toBeUpdated.id;
       request['urlsSelected'] = this.mydata;
       request['productValue'] = contactForm.value;
       request['size'] = this.size ? this.size : this.toBeUpdated.sizes;
       request['approvStatus'] = false;
       request['added_by'] = this.userAdded;
+      request["rejectStatus"] =request["rejectStatus"] === true ? false : null
       request['approved_by'] = null;
     }
-    
+
     console.log(request);
 
     this.add.sendForApproval(request).subscribe(
       (res: any) => {
         console.log(res);
         this.responseedit = res?.message;
-       
       },
       (errorMessage: any) => {
         console.log(errorMessage);
@@ -153,13 +162,59 @@ export class ProductstatusComponent implements OnInit {
 
   onclose() {
     this.toBeUpdated = '';
-    this.mydata=[];
-    window.location.reload()
+    this.mydata = [];
+    this.fetch.getProducts().subscribe(
+      (res: any) => {
+        console.log(res.products);
+
+        // const transformed = res.products.map((data: any) => {
+        //   if (data.name === this.toBeUpdated.name) {
+        //     data.approved_by = data.approved_by ? null: null
+        //     data.approvStatus = data.approvStatus === true ? false : true;
+        //     return data;
+        //   }
+        // });
+        //  console.log(transformed);
+
+        this.response = res.products;
+        console.log(this.response);
+      },
+      (errorMessage: any) => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+
+        //this.isLoading = false;
+      }
+    );
+    //window.location.reload();
   }
 
-  closeNowRes(){
+  closeNowRes() {
     this.responseedit = '';
-    this.erroredit='';
-    window.location.reload()
+    this.erroredit = '';
+    this.fetch.getProducts().subscribe(
+      (res: any) => {
+        console.log(res.products);
+
+        // const transformed = res.products.map((data: any) => {
+        //   if (data.name === this.toBeUpdated.name) {
+        //     data.approved_by = data.approved_by ? null: null
+        //     data.approvStatus = data.approvStatus === true ? false : true;
+        //     return data;
+        //   }
+        // });
+        //  console.log(transformed);
+
+        this.response = res.products;
+        console.log(this.response);
+      },
+      (errorMessage: any) => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+
+        //this.isLoading = false;
+      }
+    );
+    // window.location.reload();
   }
 }

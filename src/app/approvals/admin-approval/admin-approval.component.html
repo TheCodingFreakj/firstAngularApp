@@ -54,12 +54,12 @@
         <div>{{ r.flavors }}</div>
        
         <div>
-          <button type="submit" class="button" (click)="handleApprove(r)">
+          <button type="submit" class="button" [disabled]="role === 'User'" (click)="handleApprove(r)">
             Approve
           </button>
         </div>
         <div>
-          <button type="submit" class="button" (click)="handleReject(r)">
+          <button type="submit" class="button" [disabled]="role === 'User'" (click)="handleReject(r)">
             Reject
           </button>
         </div>

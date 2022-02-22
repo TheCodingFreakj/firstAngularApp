@@ -35,7 +35,7 @@
 
 .table {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   font-weight: 600;
   position: relative;
 }
@@ -90,6 +90,11 @@
   padding: 5px;
 }
 
+.table > div:nth-child(3n + 2) {
+  background: rgb(39, 36, 11);
+  width: 10rem;
+  word-break: break-all;
+}
 .table > div:nth-child(3n + 2) {
   background: lemonchiffon;
 }

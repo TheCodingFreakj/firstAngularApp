@@ -24,7 +24,6 @@
           >
             <p>{{ responseedit }}</p>
             <p class="close" (click)="closeNowRes()">x</p>
-          
           </div>
           <p class="close" (click)="onclose()">x</p>
           <form
@@ -118,7 +117,6 @@
                     name="selectSize"
                     (change)="selectSize($event)"
                     [checked]="toBeUpdated.sizes === 'large'"
-                  
                   />
                   Large
                 </div>
@@ -138,8 +136,6 @@
             </p>
           </form>
         </div>
-       
-         
       </div>
     </div>
     <div class="table">
@@ -157,6 +153,7 @@
       <div style="font-size: 1rem; font-weight: 900">Size</div>
       <div style="font-size: 1rem; font-weight: 900">Flavour</div>
       <div style="font-size: 1rem; font-weight: 900">Approved By</div>
+      <div style="font-size: 1rem; font-weight: 900">Approved Status</div>
       <div style="font-size: 1rem; font-weight: 900">Edit</div>
       <div style="font-size: 1rem; font-weight: 900">Delete</div>
     </div>
@@ -168,12 +165,24 @@
       let r of response | paginate: { itemsPerPage: count, currentPage: p }
     "
   >
-    <div hidden>{{ r._id }}</div>
+    <!-- <div hidden>{{ r._id }}</div> -->
     <div>{{ r.name }}</div>
     <div>{{ r.price }}</div>
     <div>{{ r.sizes }}</div>
     <div>{{ r.flavors }}</div>
     <div>{{ r.approved_by }}</div>
+    <!-- <div *ngIf="response.approvStatus === true">Approved</div>
+    <div *ngIf="response.approvStatus === false">Pending</div> -->
+
+    <ng-template [ngIf]="r.rejectStatus === true" [ngIfElse]="elseifBlock">
+      Rejected
+    </ng-template>
+
+    <ng-template #elseifBlock>
+      <div *ngIf="r.approvStatus === true; else elseBlock">Approved</div>
+
+      <ng-template #elseBlock> Pending </ng-template>
+    </ng-template>
     <div>
       <button type="submit" class="button" (click)="updateTow(r)">Edit</button>
     </div>

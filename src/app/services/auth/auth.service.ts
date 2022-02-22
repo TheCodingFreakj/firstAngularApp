@@ -16,10 +16,15 @@ export class AuthService {
   signup(fields: any) {
     return this.httpClient.post(`${this.uri}/api/v1/sign-up`, fields).pipe(
       catchError((error) => {
-        console.log(error.error);
         let errorMess = '';
-        errorMess=error.error.message
-  
+        console.log(error.error);
+        if (error.error.message.message) {
+          errorMess = error.error.message.message;
+        } else {
+          errorMess = error.error.message;
+        }
+
+        console.log(errorMess);
         return throwError(() => errorMess);
       })
     );
@@ -27,9 +32,16 @@ export class AuthService {
   signin(fields: any) {
     return this.httpClient.post(`${this.uri}/api/v1/sign-in`, fields).pipe(
       catchError((error) => {
-        console.log(error.error);
         let errorMess = '';
-        errorMess=error.error.message
+        console.log(error.error);
+        if (error.error.message.message) {
+          errorMess = error.error.message.message;
+        } else {
+          errorMess = error.error.message;
+        }
+
+        console.log(errorMess);
+
         return throwError(() => errorMess);
       })
     );

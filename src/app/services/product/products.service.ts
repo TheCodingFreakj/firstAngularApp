@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { Product } from 'src/app/core/product';
 import { PRODUCTS } from '../../mock-products';
 @Injectable({
@@ -16,7 +16,8 @@ export class ProductsService {
         let errorMess = '';
         errorMess = error.error.message;
         return throwError(() => errorMess);
-      })
+      }),
+      tap((data) => console.log(data))
     );
   }
 
@@ -44,6 +45,18 @@ export class ProductsService {
           return throwError(() => errorMess);
         })
       );
+  }
+
+  rejectedProduct(row: any) {
+    console.warn(row)
+    return this.httpClient.post(`${this.uri}/api/v1/rejectChanges`, row).pipe(
+      catchError((error) => {
+        console.log(error);
+        let errorMess = '';
+        errorMess = error.error.message;
+        return throwError(() => errorMess);
+      })
+    );
   }
 
   getApprovedProducts() {

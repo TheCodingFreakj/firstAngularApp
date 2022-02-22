@@ -19,7 +19,6 @@
     left: 0px;
     background: rgb(30, 187, 43);
     width: 40%;
-  
   }
   100% {
     opacity: 1;
@@ -32,9 +31,6 @@
 
 .inner_main {
   position: relative;
-}
-.table_container {
-  margin: 0 10rem;
 }
 
 .table {
@@ -65,7 +61,6 @@
     left: 0px;
     background: red;
     width: 40%;
-  
   }
   100% {
     opacity: 1;
@@ -89,6 +84,13 @@
   cursor: pointer;
 }
 
+.button:disabled,
+.button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 .table > div {
   margin: 1px;
   background: powderblue;
@@ -97,6 +99,8 @@
 
 .table > div:nth-child(3n + 2) {
   background: lemonchiffon;
+  width: 10rem;
+  word-break: break-all;
 }
 
 .table > div:nth-child(3n + 3) {
