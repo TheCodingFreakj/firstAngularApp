@@ -23,6 +23,8 @@ export class ProductstatusComponent implements OnInit {
   urls: any[] = [];
   size: string | undefined;
   flavorsselect: any;
+  toBeRejected: any;
+  rejectStatus: boolean | undefined;
   constructor(
     private fetch: ProductsService,
     private approve: ProductsService,
@@ -75,8 +77,27 @@ export class ProductstatusComponent implements OnInit {
     console.log(this.toBeUpdated);
   }
   deleteTow(row: any) {
-    console.log(row);
-    this.toBeUpdated = row;
+    this.toBeUpdated = null;
+    this.toBeRejected = row;
+    this.rejectStatus = true
+
+    let reqData = {
+      statusReject:this.rejectStatus,
+      idDelete:row
+    }
+    this.add.deleteProduct(reqData).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.responseedit = res.message;
+        console.log(this.responseedit)
+      },
+      (errorMessage: any) => {
+        console.log(errorMessage);
+        this.erroredit = errorMessage;
+
+        //this.isLoading = false;
+      }
+    );
   }
 
   onSubmit(contactForm: any) {

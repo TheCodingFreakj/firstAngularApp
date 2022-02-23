@@ -30,8 +30,8 @@ export class AdminApprovalComponent implements OnInit {
       this.approver = null;
     }
 
-    console.log(this.role)
-    console.log(this.approver);
+    // console.log(this.role)
+    // console.log(this.approver);
     this.approve.getApprovedProducts().subscribe(
       (res: any) => {
         console.log(res);
@@ -49,7 +49,7 @@ export class AdminApprovalComponent implements OnInit {
   }
 
   handleApprove(row: any) {
-    //console.log(row);
+    console.log(row);
 
     //console.log(this.role);
 
@@ -68,26 +68,51 @@ export class AdminApprovalComponent implements OnInit {
     };
 
     if (this.role === 'Admin') {
+
+      console.log(this.loggedInUser)
+      console.log(row.added_by)
       if (this.loggedInUser !== row.added_by) {
-        // console.log(this.loggedInUser)
-        // console.log(row.added_by)
-        this.add.addProduct(reqProduct).subscribe(
-          (res: any) => {
-            console.log(res);
-            this.responseadd = res.message;
-            // this.approve.getApprovedProducts()
-            // window.location.reload()
-          },
-          (errorMessage: any) => {
-            console.log(errorMessage);
-            this.error = errorMessage;
-            //this.isLoading = false;
+        
+        row.approvStatus = true;
+        if (row.deleteStatus === true) {
+          if (this.loggedInUser !== row.added_by) {
+            this.add.deleteProductdb(row.name, row.approvStatus).subscribe(
+              (res: any) => {
+                console.log(res);
+                this.responseadd = res.message;
+                // this.approve.getApprovedProducts()
+                // window.location.reload()
+              },
+              (errorMessage: any) => {
+                console.log(errorMessage);
+                this.error = errorMessage;
+                //this.isLoading = false;
+              }
+            );
+          } else {
+            //console.log('hkhk');
+            this.errorfecth = 'You Yourself cant approve reject';
+            //console.log(this.errorfecth);
           }
-        );
+        } else {
+          this.add.addProduct(reqProduct).subscribe(
+            (res: any) => {
+              console.log(res);
+              this.responseadd = res.message;
+              // this.approve.getApprovedProducts()
+              // window.location.reload()
+            },
+            (errorMessage: any) => {
+              console.log(errorMessage);
+              this.error = errorMessage;
+              //this.isLoading = false;
+            }
+          );
+        }
       } else {
         //console.log('hkhk');
         this.errorfecth = 'You Yourself cant approve';
-        console.log(this.errorfecth);
+        //console.log(this.errorfecth);
       }
     }
   }
@@ -96,21 +121,44 @@ export class AdminApprovalComponent implements OnInit {
     //this.responseadd = 'Its been Rejected';
     //console.log(row);
     if (this.role === 'Admin') {
-      console.log(this.loggedInUser);
-      console.log(row.added_by);
+      // console.log(this.loggedInUser);
+      // console.log(row.added_by);
       if (this.loggedInUser !== row.added_by) {
-        this.add.rejectedProduct(row).subscribe(
-          (res: any) => {
-            console.log(res);
-            this.responseadd = res.message;
-            console.log(this.responseadd);
-          },
-          (errorMessage: any) => {
-            console.log(errorMessage);
-            this.errorfecth = errorMessage;
-            //this.isLoading = false;
+        row.approvStatus = false;
+        if (row.deleteStatus === true) {
+          if (this.loggedInUser !== row.added_by) {
+            this.add.deleteProductdb(row.name, row.approvStatus).subscribe(
+              (res: any) => {
+                console.log(res);
+                this.responseadd = res.message;
+                // this.approve.getApprovedProducts()
+                // window.location.reload()
+              },
+              (errorMessage: any) => {
+                console.log(errorMessage);
+                this.error = errorMessage;
+                //this.isLoading = false;
+              }
+            );
+          } else {
+            //console.log('hkhk');
+            this.errorfecth = 'You Yourself cant reject';
+            //console.log(this.errorfecth);
           }
-        );
+        } else {
+          this.add.rejectedProduct(row).subscribe(
+            (res: any) => {
+              console.log(res);
+              this.responseadd = res.message;
+              console.log(this.responseadd);
+            },
+            (errorMessage: any) => {
+              console.log(errorMessage);
+              this.errorfecth = errorMessage;
+              //this.isLoading = false;
+            }
+          );
+        }
       } else {
         //console.log('hkhk');
         this.errorfecth = 'You Yourself cant reject';

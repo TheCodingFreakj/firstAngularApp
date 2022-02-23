@@ -1,1 +1,28 @@
-<h1>Footer</h1>
+<div class="footer">
+  <div class="inner_footer">
+    <h1>About</h1>
+    Hey, This is Pallavi, the founder of programming chunks. I work as a
+    software engineer,
+  </div>
+
+  <div className="inner_footer">
+    <h1>Services</h1>
+
+    <div class="inner_footer2">
+      <a class="active" [routerLink]="'/home'">Home</a>
+      <a [routerLink]="'/products'">Products</a>
+      <a [routerLink]="'/cart'">Cart</a>
+      <a [routerLink]="'/signup'">Signup</a>
+      <a [routerLink]="'/signin'">SignIn</a>
+    </div>
+  </div>
+
+  <div className="inner_footer">
+    <h1>Social Media</h1>
+    <div class="inner_footer2">
+      <a to="/" exact> Facebook </a>
+      <a to="/" exact> Instagram </a>
+      <a to="/" exact> Linkedin </a>
+    </div>
+  </div>
+</div>

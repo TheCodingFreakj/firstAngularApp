@@ -33,7 +33,7 @@
         </div>
         <div style="font-size: 1rem; font-weight: 900">Product</div>
         <div style="font-size: 1rem; font-weight: 900">Price</div>
-        <div style="font-size: 1rem; font-weight: 900">Approve Status</div>
+        <div style="font-size: 1rem; font-weight: 900">Status</div>
         <div style="font-size: 1rem; font-weight: 900">Submitted By</div>
         <div style="font-size: 1rem; font-weight: 900">Images</div>
         <div style="font-size: 1rem; font-weight: 900">Size</div>
@@ -47,25 +47,42 @@
         <div hidden>{{ r._id }}</div>
         <div>{{ r.name }}</div>
         <div>{{ r.price }}</div>
-        <div>{{ r.approvStatus }}</div>
+        <div>
+          {{ r.deleteStatus ? r.deleteStatus : r.approvStatus }}->
+          {{ r.deleteStatus ? "Delete" : "Apporve" }}
+        </div>
         <div>{{ r.added_by }}</div>
         <div>{{ r.imageUrls.length }}</div>
         <div>{{ r.sizes }}</div>
         <div>{{ r.flavors }}</div>
-       
+
         <div>
-          <button type="submit" class="button" [disabled]="role === 'User'" (click)="handleApprove(r)">
+          <button
+            type="submit"
+            class="button"
+            [disabled]="role === 'User'"
+            (click)="handleApprove(r)"
+          >
             Approve
           </button>
         </div>
         <div>
-          <button type="submit" class="button" [disabled]="role === 'User'" (click)="handleReject(r)">
+          <button
+            type="submit"
+            class="button"
+            [disabled]="role === 'User'"
+            (click)="handleReject(r)"
+          >
             Reject
           </button>
         </div>
       </div>
     </div>
 
-    <ng-template #empty><h1 style="text-align: center; margin-top: 3rem;">Approval List Is Empty</h1></ng-template>
+    <ng-template #empty
+      ><h1 style="text-align: center; margin-top: 3rem">
+        Approval List Is Empty
+      </h1></ng-template
+    >
   </div>
 </div>

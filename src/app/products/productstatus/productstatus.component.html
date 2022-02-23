@@ -9,7 +9,7 @@
         text-align: center;
         margin-left: 10rem;
       "
-      *ngIf="toBeUpdated"
+      *ngIf="toBeUpdated; else elseBlockDelete"
     >
       <div style="margin-left: 10rem">
         <div class="modal_content">
@@ -138,6 +138,16 @@
         </div>
       </div>
     </div>
+    <ng-template #elseBlockDelete>
+      <div class="error_builder" style="padding: 2%" *ngIf="erroredit">
+        <p>{{ erroredit }}</p>
+        <p class="close" (click)="closeNowRes()">x</p>
+      </div>
+      <div class="response_builder" style="padding: 2%" *ngIf="responseedit">
+        <p>{{ responseedit }}</p>
+        <p class="close" (click)="closeNowRes()">x</p>
+      </div>
+    </ng-template>
     <div class="table">
       <div style="font-size: 1rem; font-weight: 900">Name</div>
       <div style="font-size: 1rem; font-weight: 900" (click)="sortingPrice()">
@@ -187,7 +197,7 @@
       <button type="submit" class="button" (click)="updateTow(r)">Edit</button>
     </div>
     <div>
-      <button type="submit" class="button" (click)="deleteTow(r._id)">
+      <button type="submit" class="button" (click)="deleteTow(r)">
         Delete
       </button>
     </div>

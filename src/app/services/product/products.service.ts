@@ -48,7 +48,7 @@ export class ProductsService {
   }
 
   rejectedProduct(row: any) {
-    console.warn(row)
+    console.warn(row);
     return this.httpClient.post(`${this.uri}/api/v1/rejectChanges`, row).pipe(
       catchError((error) => {
         console.log(error);
@@ -57,6 +57,34 @@ export class ProductsService {
         return throwError(() => errorMess);
       })
     );
+  }
+
+  deleteProduct(reqData: any) {
+    console.warn(reqData);
+    return this.httpClient
+      .post(`${this.uri}/api/v1/senddeleteApproval`, reqData)
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          let errorMess = '';
+          errorMess = error.error.message;
+          return throwError(() => errorMess);
+        })
+      );
+  }
+
+  deleteProductdb(reqData: any, approveStatus: any) {
+    console.warn(reqData);
+    return this.httpClient
+      .delete(`${this.uri}/api/v1/deleteproducts/${reqData}?approveStatus=${approveStatus}`)
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          let errorMess = '';
+          errorMess = error.error.message;
+          return throwError(() => errorMess);
+        })
+      );
   }
 
   getApprovedProducts() {

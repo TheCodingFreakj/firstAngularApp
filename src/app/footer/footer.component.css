@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  height: 30rem;
+  background: black;
+  color: aliceblue;
+  margin: 1% 0;
+  margin-left: -100px;
+}
+
+.inner_footer {
+  width: 20rem;
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.inner_footer2 {
+  display: flex;
+  flex-direction: column;
+}
+.inner_footer2 a {
+  color: aliceblue;
+}
