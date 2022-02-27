@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderAppComponent } from './header-app/header-app.component';
@@ -66,7 +66,7 @@ import { ProductstatusComponent } from './products/productstatus/productstatus.c
     BrowserAnimationsModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

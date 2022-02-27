@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  first-angular-project-dev:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        ENV: sandbox
+    volumes:
+      - .:/dist/src/app
+    ports:
+      - "4200:80"
+   
+
+
+  first-angular-project-prod:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        ENV: prod 
+    volumes:
+      - .:/dist/src/app
+    ports:
+      - "4201:80"
+  
+                 
