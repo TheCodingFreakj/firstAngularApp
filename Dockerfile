@@ -1,4 +1,3 @@
-
 FROM node:12.22.10-alpine AS build
 ARG ENV
 RUN echo "Build number: $ENV"
@@ -11,8 +10,10 @@ RUN npm cache clean --force
 # Copy files from local machine to virtual directory in docker image
 COPY . .
 RUN npm install
-RUN if [  $ENV= sandbox ] ; then npm run build:sandbox ; else npm run build:prod ; fi
+# RUN if [  "$ENV"= "sandbox" ] ; then npm run build:sandbox ; else npm run build:prod ; fi
 
+RUN if [  "$ENV"= "sandbox" ] ; then npm run build:sandbox ; fi
+RUN if [  "$ENV"= "prod" ] ; then npm run build:prod ; fi
 
 
 ### STAGE 2:RUN ###

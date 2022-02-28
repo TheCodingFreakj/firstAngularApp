@@ -23,5 +23,3 @@ services:
       - .:/dist/src/app
     ports:
       - "4201:80"
-  
-                 

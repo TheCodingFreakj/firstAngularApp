@@ -4,10 +4,9 @@
 
 export const environment = {
   production: false,
-  config: {
-    host: 'http://locahost:5000'
+  baseUrl: 'http://locahost:5000'
     // more config
-  }
+
 };
 
 /*
